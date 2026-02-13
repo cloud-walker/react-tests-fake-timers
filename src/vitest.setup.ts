@@ -1,16 +1,16 @@
-import '@testing-library/jest-dom/vitest';
-import { afterEach, beforeEach, vi } from 'vitest';
+import "@testing-library/jest-dom/vitest";
+import { cleanup } from "@testing-library/react";
+import { afterEach, beforeEach, vi } from "vitest";
 
 beforeEach(() => {
-  vi.useFakeTimers()
-
-
-  vi.stubGlobal('jest', {
-    advanceTimersByTime: vi.advanceTimersByTime.bind(vi),
-  })
-})
+	vi.stubGlobal("jest", {
+		advanceTimersByTime: vi.advanceTimersByTime.bind(vi),
+	});
+	vi.useFakeTimers();
+});
 
 afterEach(() => {
-  vi.runOnlyPendingTimers();
-  vi.useRealTimers()
-})
+	vi.runOnlyPendingTimers();
+	vi.useRealTimers();
+	cleanup();
+});
