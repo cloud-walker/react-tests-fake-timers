@@ -10,6 +10,6 @@ test('suspense', async () => {
       <TodoList />
     </Suspense>
   </QueryClientProvider>)
-  await waitForElementToBeRemoved(() => screen.getAllByText('Loading...'))
+  await waitForElementToBeRemoved(() => screen.getAllByText(/loading/i))
   expect(screen.getByRole('list')).toBeInTheDocument()
 })
